@@ -4,10 +4,9 @@ from transformers import AutoTokenizer, VisionEncoderDecoderModel
 
 
 class SpaceTimeGPT(nn.Module):
-    def __init__(self):
+    def __init__(self, device):
         super().__init__()
-        self.device = torch.device(
-            "cuda" if torch.cuda.is_available() else "cpu")
+        self.device = device
 
         self.tokenizer = AutoTokenizer.from_pretrained("gpt2")
         self.model = VisionEncoderDecoderModel.from_pretrained(
